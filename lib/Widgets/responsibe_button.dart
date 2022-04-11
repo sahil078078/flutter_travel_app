@@ -18,7 +18,12 @@ class ResponsiveButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
-        children: [],
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset('assets/images/arrow.png'),
+          )
+        ],
       ),
     );
   }
