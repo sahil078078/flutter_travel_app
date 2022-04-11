@@ -18,7 +18,6 @@ class _WelcomePageState extends State<WelcomePage> {
     'welcome-three.png',
   ];
 
-  List myText = [];
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +40,7 @@ class _WelcomePageState extends State<WelcomePage> {
             child: Container(
               margin: const EdgeInsets.only(top: 150, left: 20, right: 20),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,8 +57,22 @@ class _WelcomePageState extends State<WelcomePage> {
                           size: 14,
                         ),
                       ),
+                      const SizedBox(height: 40),
                       ResponsiveButton(),
                     ],
+                  ),
+                  Column(
+                    children: List.generate(3 , (indexDots) {
+                      return Container(
+                        margin: const EdgeInsets.all(2),
+                        width: 8,
+                        height: index==indexDots ? 35:8,
+                        decoration: BoxDecoration(
+                          color:index==indexDots? AppColors.mainColor:AppColors.mainColor.withOpacity(0.7),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      );
+                    }),
                   ),
                 ],
               ),
