@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_travel_app/pages/navpages/bar_item_page.dart';
-import 'package:flutter_travel_app/pages/navpages/home_page.dart';
+import 'package:flutter_travel_app/pages/home_page.dart';
 import 'package:flutter_travel_app/pages/navpages/my_page.dart';
 import 'package:flutter_travel_app/pages/navpages/search_page.dart';
 
@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
     const BarItemPage(),
     const SearchPage(),
     const MyPage(),
-  ];
+  ]; // list of pages(Class)
   int currentIndex = 0;
 
   void onTap(int index) {
@@ -26,8 +26,6 @@ class _MainPageState extends State<MainPage> {
     setState(() {
       currentIndex = index;
     });
-
-
   }
 
   @override
