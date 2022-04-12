@@ -20,6 +20,9 @@ class AppText extends StatelessWidget {
         color: color,
         fontSize: size,
       ),
+      textAlign: TextAlign.justify,
+      maxLines: 3,
+      overflow: TextOverflow.fade,
     );
   }
 }

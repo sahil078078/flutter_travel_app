@@ -3,6 +3,8 @@ import 'package:flutter_travel_app/Widgets/app_large_text.dart';
 import 'package:flutter_travel_app/Widgets/app_text.dart';
 import 'package:flutter_travel_app/misc/colors.dart';
 
+import '../Widgets/app_buttons.dart';
+
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
 
@@ -11,6 +13,8 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  int selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,22 +128,69 @@ class _DetailPageState extends State<DetailPage> {
                   const SizedBox(height: 10),
                   Wrap(
                     children: List.generate(
-                        5,
-                        (index) => Container(
-                              margin: const EdgeInsets.only(left: 10),
-                              width: 60,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(index.toString()),
-                            )),
-                  )
+                      5,
+                      (index) => InkWell(
+                        onTap: () {
+                          setState(() {
+                            selectedIndex = index;
+                          });
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(right: 10),
+                          child: AppButtons(
+                            color: selectedIndex == index
+                                ? const Color(0xff5c6898)
+                                : const Color(0xff095761),
+                            backgroundColor: selectedIndex == index
+                                ? const Color(0xffaee4fe)
+                                : const Color(0xfffee5e1),
+                            size: 50,
+                            borderColor: selectedIndex == index
+                                ? Colors.blueAccent.shade100
+                                : Colors.grey,
+                            isShadow: selectedIndex == index ? true : false,
+                            text: (index + 1).toString(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  AppLargeText(
+                    text: "Description",
+                    color: Colors.black.withOpacity(0.5),
+                    size: 25,
+                  ),
+                  const SizedBox(height: 8),
+                  AppText(
+                    text:
+                        'to go from one place to another, as by car, train, plane, or ship; take a trip; journey: to travel for pleasure. to move or go from one place or point to another. to proceed or advance in any way',
+                    color: AppColors.mainTextColor,
+                  ),
+                  Row(
+                    children: <Widget>[],
+                  ),
                 ],
               ),
             ),
-          )
+          ),
+          Positioned(
+            left: 20,
+            bottom: 10,
+            child: Row(
+              children: <Widget>[
+                AppButtons(
+                  color: const Color(0xffaee4fe),
+                  backgroundColor: const Color(0xfffee5e1),
+                  size: 60,
+                  borderColor: AppColors.textColor2,
+                  isIcon: true,
+                  icon: Icons.favorite,
+                  isShadow: false,
+                )
+              ],
+            ),
+          ),
         ],
       ),
     );
