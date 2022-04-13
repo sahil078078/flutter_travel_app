@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_travel_app/Widgets/app_large_text.dart';
 import 'package:flutter_travel_app/Widgets/app_text.dart';
+import 'package:flutter_travel_app/Widgets/responsibe_button.dart';
 import 'package:flutter_travel_app/misc/colors.dart';
 
 import '../Widgets/app_buttons.dart';
@@ -14,7 +15,7 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   int selectedIndex = 0;
-
+  bool selectedLike=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -179,15 +180,24 @@ class _DetailPageState extends State<DetailPage> {
             bottom: 10,
             child: Row(
               children: <Widget>[
-                AppButtons(
-                  color: const Color(0xffaee4fe),
-                  backgroundColor: const Color(0xfffee5e1),
-                  size: 60,
-                  borderColor: AppColors.textColor2,
-                  isIcon: true,
-                  icon: Icons.favorite,
-                  isShadow: false,
-                )
+                InkWell(
+                  onTap: (){
+                    setState(() {
+                      selectedLike=!selectedLike;
+                    });
+                  },
+                  child: AppButtons(
+                    color:selectedLike ==true ? Color(0xffff4000):const Color(0xffaee4fe),
+                    backgroundColor: const Color(0xfffee5e1),
+                    size: 60,
+                    borderColor: selectedLike==true?Colors.black:Colors.grey ,
+                    isIcon: true,
+                    icon: Icons.favorite,
+                    isShadow: selectedLike==true?true:false,
+                  ),
+                ),
+                const SizedBox(width: 20),
+                ResponsiveButton(width: MediaQuery.of(context).size.width-120,isResponsive: true),
               ],
             ),
           ),

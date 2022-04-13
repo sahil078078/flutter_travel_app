@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_travel_app/Widgets/app_text.dart';
 import 'package:flutter_travel_app/misc/colors.dart';
 
 class ResponsiveButton extends StatelessWidget {
@@ -18,12 +19,17 @@ class ResponsiveButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment:isResponsive==true? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
         children: [
+          isResponsive==true ? const Padding(
+         padding: EdgeInsets.only(left: 30),
+         child:  Text("Book Trip Now",style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w800),),
+       ):const SizedBox(),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/images/arrow.png'),
-          )
+            child: Image.asset('assets/images/arrow.png')
+          ),
+
         ],
       ),
     );
